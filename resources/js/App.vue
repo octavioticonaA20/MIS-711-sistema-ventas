@@ -23,11 +23,11 @@
                     <!-- Right side -->
                     <!-- User Profile Dropdown -->
                     <div class="user-profile dropdown" v-if="usuario">
-                        <div class="d-flex align-items-center gap-3 dropdown-toggle" 
+                        <div class="d-flex align-items-center gap-3 dropdown-toggle"
                              @click.stop="showProfileMenu = !showProfileMenu"
                              :class="{ 'show': showProfileMenu }"
-                             role="button" 
-                             aria-expanded="false" 
+                             role="button"
+                             aria-expanded="false"
                              style="cursor: pointer;">
                             <div class="user-info text-end" v-if="!isMobile">
                                 <div class="user-name fw-bold">{{ usuario.name }}</div>
@@ -37,7 +37,7 @@
                                 {{ usuario.name?.substring(0,2).toUpperCase() }}
                             </div>
                         </div>
-                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow mt-2" 
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow mt-2"
                             :class="{ 'show': showProfileMenu }"
                             style="position: absolute; right: 0; left: auto;">
                             <li><h6 class="dropdown-header">Hola, {{ usuario.name }}</h6></li>
@@ -58,7 +58,7 @@
             <ul class="sidebar-menu">
                 <!-- Dashboard -->
                 <li class="menu-item">
-                    <a class="menu-link" 
+                    <a class="menu-link"
                        :class="{ 'active': moduloActivo === 'dashboard' }"
                        @click="cambiarModulo('dashboard')">
                         <i class="menu-icon fas fa-tachometer-alt"></i>
@@ -73,7 +73,7 @@
                     <div class="menu-section-title">Inventario</div>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" 
+                    <a class="menu-link"
                        :class="{ 'active': moduloActivo === 'productos' }"
                        @click="cambiarModulo('productos')">
                         <i class="menu-icon fas fa-box"></i>
@@ -81,7 +81,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" 
+                    <a class="menu-link"
                        :class="{ 'active': moduloActivo === 'categorias' }"
                        @click="cambiarModulo('categorias')">
                         <i class="menu-icon fas fa-tags"></i>
@@ -96,7 +96,7 @@
                     <div class="menu-section-title">Contactos</div>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" 
+                    <a class="menu-link"
                        :class="{ 'active': moduloActivo === 'clientes' }"
                        @click="cambiarModulo('clientes')">
                         <i class="menu-icon fas fa-users"></i>
@@ -104,7 +104,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" 
+                    <a class="menu-link"
                        :class="{ 'active': moduloActivo === 'proveedores' }"
                        @click="cambiarModulo('proveedores')">
                         <i class="menu-icon fas fa-truck"></i>
@@ -119,7 +119,7 @@
                     <div class="menu-section-title">Transacciones</div>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" 
+                    <a class="menu-link"
                        :class="{ 'active': moduloActivo === 'compras' }"
                        @click="cambiarModulo('compras')">
                         <i class="menu-icon fas fa-shopping-bag"></i>
@@ -127,7 +127,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" 
+                    <a class="menu-link"
                        :class="{ 'active': moduloActivo === 'ventas' }"
                        @click="cambiarModulo('ventas')">
                         <i class="menu-icon fas fa-cash-register"></i>
@@ -139,14 +139,14 @@
 
                 <!-- Sección Reportes -->
                 <li class="menu-item">
-                    <a class="menu-link" 
+                    <a class="menu-link"
                        :class="{ 'active': moduloActivo === 'reportes' }"
                        @click="cambiarModulo('reportes')">
                         <i class="menu-icon fas fa-chart-bar"></i>
                         <span class="menu-text">Reportes</span>
                     </a>
                 </li>
-                
+
                 <div class="menu-divider"></div>
 
                 <!-- Sección Configuración -->
@@ -154,7 +154,7 @@
                     <div class="menu-section-title">Configuración</div>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" 
+                    <a class="menu-link"
                        :class="{ 'active': moduloActivo === 'usuarios' }"
                        @click="cambiarModulo('usuarios')">
                         <i class="menu-icon fas fa-users"></i>
@@ -162,7 +162,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" 
+                    <a class="menu-link"
                        :class="{ 'active': moduloActivo === 'roles' }"
                        @click="cambiarModulo('roles')">
                         <i class="menu-icon fas fa-user-tag"></i>
@@ -170,7 +170,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" 
+                    <a class="menu-link"
                        :class="{ 'active': moduloActivo === 'permisos' }"
                        @click="cambiarModulo('permisos')">
                         <i class="menu-icon fas fa-key"></i>
@@ -431,7 +431,7 @@ const cambiarModulo = (modulo) => {
 const configurarHeaders = (token) => {
     // Configurar Headers para Axios
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    
+
     // Configurar Headers para jQuery (DataTables)
     $.ajaxSetup({
         beforeSend: function(xhr, settings) {
@@ -444,8 +444,8 @@ const configurarHeaders = (token) => {
 
     // Configurar manejador de errores global para jQuery (DataTables 401)
     // Remover handlers anteriores para evitar duplicados
-    $(document).off('ajaxError'); 
-    $(document).ajaxError((event, jqxhr, settings, thrownError) => {
+    $(document).off('ajaxError');
+    $(document).ajaxError((event, jqxhr) => {
         if (jqxhr.status === 401) {
             console.warn("jQuery AJAX 401 DETECTADO (DataTables)");
             if (localStorage.getItem('auth_token')) {
@@ -509,7 +509,7 @@ const logout = async () => {
     }
 
     limpiarSesion();
-    
+
     Swal.fire({
         toast: true,
         position: 'top-end',
