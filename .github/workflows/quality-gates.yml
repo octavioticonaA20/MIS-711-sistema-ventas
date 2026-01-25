@@ -26,7 +26,7 @@ jobs:
       - name: Setup PHP 8.2
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.2"
+          php-version: "8.4"
           extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, pdo_pgsql
           coverage: xdebug
 
@@ -116,7 +116,7 @@ jobs:
     steps:
       - name: Check Results
         run: |
-          echo "## Pipeline Results" >> $GITHUB_STEP_SUMMARY
+          echo "## 📊 Pipeline Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY

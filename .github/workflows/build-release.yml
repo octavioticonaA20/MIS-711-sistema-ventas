@@ -203,9 +203,9 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| **Release** | \`${{ steps.version.outputs.release_name }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Branch** | \`${{ github.ref_name }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Commit** | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Artifact** | \`${{ env.artifact_name }}.tar.gz\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| *Release* | \${{ steps.version.outputs.release_name }}\ |" >> $GITHUB_STEP_SUMMARY
+          echo "| *Branch* | \${{ github.ref_name }}\ |" >> $GITHUB_STEP_SUMMARY
+          echo "| *Commit* | \${{ github.sha }}\ |" >> $GITHUB_STEP_SUMMARY
+          echo "| *Artifact* | \${{ env.artifact_name }}.tar.gz\ |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Release created successfully!" >> $GITHUB_STEP_SUMMARY
