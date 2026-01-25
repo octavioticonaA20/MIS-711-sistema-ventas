@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - develop
-      - ci-dia4
+      - feature/continuous-delibery-enviroments
   workflow_dispatch:
     inputs:
       version:
