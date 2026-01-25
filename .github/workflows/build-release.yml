@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - develop
+      - ci-dia4
   workflow_dispatch:
     inputs:
       version:
@@ -16,8 +17,11 @@ concurrency:
   group: build-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 env:
-  PHP_VERSION: "8.2"
+  PHP_VERSION: "8.4"
   NODE_VERSION: "20"
 
 jobs:
@@ -137,7 +141,8 @@ jobs:
           ARTIFACT_NAME="sistema-ventas-${{ steps.version.outputs.release_name }}"
 
           # Create tar.gz excluding unnecessary files
-          tar -czvf "${ARTIFACT_NAME}.tar.gz" \
+          # Create tar.gz excluding unnecessary files
+          tar -czf "${ARTIFACT_NAME}.tar.gz" \
             --exclude='node_modules' \
             --exclude='.git' \
             --exclude='.env' \
@@ -157,7 +162,7 @@ jobs:
             --exclude='vitest.config.js' \
             --exclude='eslint.config.js' \
             --exclude='.claude' \
-            .
+            . || [[ $? -eq 1 ]]
 
           # Generate checksum
           sha256sum "${ARTIFACT_NAME}.tar.gz" > "${ARTIFACT_NAME}.tar.gz.sha256"
@@ -198,9 +203,9 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| *Release* | \${{ steps.version.outputs.release_name }}\ |" >> $GITHUB_STEP_SUMMARY
-          echo "| *Branch* | \${{ github.ref_name }}\ |" >> $GITHUB_STEP_SUMMARY
-          echo "| *Commit* | \${{ github.sha }}\ |" >> $GITHUB_STEP_SUMMARY
-          echo "| *Artifact* | \${{ env.artifact_name }}.tar.gz\ |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Release** | \`${{ steps.version.outputs.release_name }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Branch** | \`${{ github.ref_name }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Commit** | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Artifact** | \`${{ env.artifact_name }}.tar.gz\` |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Release created successfully!" >> $GITHUB_STEP_SUMMARY
