@@ -5,7 +5,7 @@ on:
   workflow_run:
     workflows: ["Build & Release"]
     types: [completed]
-    branches: [main, feature/continuous-delibery-enviroments]
+    branches: [main, develop]
 
   # Manual trigger
   workflow_dispatch:
