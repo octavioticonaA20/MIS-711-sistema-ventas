@@ -155,7 +155,7 @@ jobs:
 
           echo "📦 Downloading release: ${RELEASE_TAG}"
 
-          ARTIFACT_NAME="sistema-ventas-staging${RELEASE_TAG}"
+          ARTIFACT_NAME="sistema-ventas-${RELEASE_TAG}"
           DOWNLOAD_URL="https://github.com/${{ github.repository }}/releases/download/${RELEASE_TAG}/${ARTIFACT_NAME}.tar.gz"
 
           mkdir -p "/tmp/deploy-${TIMESTAMP}"
